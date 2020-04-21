@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Card, CardContent, Typography, Grid } from "@material-ui/core";
+import CountUp from "react-countup";
+import cx from "classnames";
+import styles from "./cards.module.css";
 
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
   console.log(confirmed);
@@ -13,15 +16,29 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
       {" "}
       <h1>Cards</h1>
       <Grid container spacing={3} justify="center">
-        <Grid item component={Card}>
+        <Grid
+          item
+          component={Card}
+          xs={12}
+          md={3}
+          className={cx(styles.card, styles.infected)}
+        >
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               {" "}
               Infected
             </Typography>
-            <Typography variant="h5">{confirmed.value}</Typography>
+            <Typography variant="h5">
+              <CountUp
+                start={0}
+                end={confirmed.value}
+                duration={2.5}
+                separator=","
+              />
+              {/* {confirmed.value} */}
+            </Typography>
             <Typography color="textSecondary" gutterBottom>
-              Real Date{" "}
+              {new Date(lastUpdate).toDateString()}
             </Typography>
             <Typography variant="body2">
               Number of active cases of covide-19{" "}
@@ -29,15 +46,29 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
           </CardContent>
         </Grid>
 
-        <Grid item component={Card}>
+        <Grid
+          item
+          component={Card}
+          xs={12}
+          md={3}
+          className={cx(styles.card, styles.recovered)}
+        >
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               {" "}
-              Infected
+              Recovered
             </Typography>
-            <Typography variant="h5">Real Data</Typography>
+            <Typography variant="h5">
+              {" "}
+              <CountUp
+                start={0}
+                end={recovered.value}
+                duration={2.5}
+                separator=","
+              />
+            </Typography>
             <Typography color="textSecondary" gutterBottom>
-              Real Date{" "}
+              {new Date(lastUpdate).toDateString()}
             </Typography>
             <Typography variant="body2">
               Number of Recovered cases of covide-19{" "}
@@ -45,15 +76,29 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
           </CardContent>
         </Grid>
 
-        <Grid item component={Card}>
+        <Grid
+          item
+          component={Card}
+          xs={12}
+          md={3}
+          className={cx(styles.card, styles.deaths)}
+        >
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               {" "}
-              Infected
+              Deaths
             </Typography>
-            <Typography variant="h5">Real Data</Typography>
+            <Typography variant="h5">
+              {" "}
+              <CountUp
+                start={0}
+                end={deaths.value}
+                duration={2.5}
+                separator=","
+              />
+            </Typography>
             <Typography color="textSecondary" gutterBottom>
-              Real Date{" "}
+              {new Date(lastUpdate).toDateString()}
             </Typography>
             <Typography variant="body2">
               Number of Death cases of covide-19{" "}

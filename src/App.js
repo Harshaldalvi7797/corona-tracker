@@ -27,7 +27,7 @@ class App extends Component {
       <div className={styles.container}>
         {/* <h1>Welcome</h1> */}
         <Cards data={this.state.data} />
-        <Charts />
+        {/* <Charts /> */}
         <CountryPicker />
       </div>
     );
