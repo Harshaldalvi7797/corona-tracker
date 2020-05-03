@@ -5,6 +5,7 @@ import { render } from "@testing-library/react";
 import { Cards, Charts, CountryPicker } from "./components/index";
 import styles from "./app.module.css";
 import { fetchData } from "./api/index";
+import LineChart from "./components/LineChart";
 
 class App extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends Component {
         <Cards data={this.state.data} />
         {/* <Charts /> */}
         <CountryPicker />
+        <LineChart />
       </div>
     );
   }
