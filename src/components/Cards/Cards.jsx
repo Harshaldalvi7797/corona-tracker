@@ -14,7 +14,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
   return (
     <div className="styles.container">
       {" "}
-      <h1>Cards</h1>
+      {/* <h1>Cards</h1> */}
       <Grid container spacing={3} justify="center">
         <Grid
           item

@@ -1,36 +1,60 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import "./App.css";
+
 import { render } from "@testing-library/react";
 import { Cards, Charts, CountryPicker } from "./components/index";
 import styles from "./app.module.css";
-import { fetchData } from "./api/index";
-import LineChart from "./components/LineChart";
+import { fetchData, fetchCountries } from "./api/index";
+import image from "./images/image.png";
 
 class App extends Component {
   constructor(props) {
     super(props);
   }
   state = {
-    data: {}
+    data: {},
+    country: ""
   };
 
   async componentDidMount() {
     const fetchedData = await fetchData();
     this.setState({ data: fetchedData });
     console.log(fetchedData);
-    // console.log(data:{fetchData});
   }
+
+  handleCountryChange = async country => {
+    //fetch data
+    const response = await fetchData(country);
+    console.log(response);
+
+    this.setState({ data: response, country: country });
+  };
   render() {
-    //const data = this.state;
-    //console.log(data);
+    const { data, country } = this.state;
     return (
       <div className={styles.container}>
-        {/* <h1>Welcome</h1> */}
-        <Cards data={this.state.data} />
-        {/* <Charts /> */}
-        <CountryPicker />
-        <LineChart />
+        <div className="row">
+          <div className="col-sm-12">
+            <img
+              className="image"
+              style={{ marginLeft: "50px", marginBottom: "50px" }}
+              src={image}
+            />{" "}
+            <br />
+            <Cards
+              // @ts-ignore
+              data={data}
+            />
+          </div>{" "}
+          <br />
+          <div className="container">
+            <CountryPicker handleCountryChange={this.handleCountryChange} />
+          </div>
+          <div className="">
+            {" "}
+            <Charts data={data} country={country} />
+          </div>
+        </div>
       </div>
     );
   }
