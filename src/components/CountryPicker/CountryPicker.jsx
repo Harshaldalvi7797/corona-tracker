@@ -13,21 +13,25 @@ const CountryPicker = ({ handleCountryChange }) => {
   }, [setCountries]);
   console.log(setCountries);
   return (
-    <div className="container" style={{ marginLeft: "45px" }}>
-      {" "}
-      <FormControl className={styles.FormControl} style={{ marginTop: "15px" }}>
-        <NativeSelect
-          defaultValue="Global"
-          onChange={e => handleCountryChange(e.target.value)}
+    <div className="container" style={{ marginLeft: "0" }}>
+      <div className="col-sm-6">
+        <FormControl
+          className={styles.FormControl}
+          style={{ marginLeft: "25px" }}
         >
-          <option value="">global</option>
-          {countries.map((country, i) => (
-            <option key={i} value={country}>
-              {country}
-            </option>
-          ))}
-        </NativeSelect>
-      </FormControl>
+          <NativeSelect
+            defaultValue="Global"
+            onChange={e => handleCountryChange(e.target.value)}
+          >
+            <option value="">global</option>
+            {countries.map((country, i) => (
+              <option key={i} value={country}>
+                {country}
+              </option>
+            ))}
+          </NativeSelect>
+        </FormControl>
+      </div>
     </div>
   );
 };

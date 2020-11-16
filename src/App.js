@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-
+import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 import { render } from "@testing-library/react";
 import { Cards, Charts, CountryPicker } from "./components/index";
 import styles from "./app.module.css";
@@ -33,21 +33,23 @@ class App extends Component {
     const { data, country } = this.state;
     return (
       <div className={styles.container}>
-        <div className="row">
-          <div className="col-sm-12">
-            <img
-              className="image"
-              style={{ marginLeft: "50px", marginBottom: "50px" }}
-              src={image}
-            />{" "}
-            <br />
-            <Cards
-              // @ts-ignore
-              data={data}
-            />
-          </div>{" "}
+        <div className="container" style={{ paddingLeft: "30px" }}>
+          <div className="row">
+            <div className="col-sm-12">
+              <img
+                className="image"
+                style={{ marginLeft: "20px", marginBottom: "20px" }}
+                src={image}
+              />{" "}
+              <br />
+              <Cards
+                // @ts-ignore
+                data={data}
+              />
+            </div>{" "}
+          </div>
           <br />
-          <div className="container">
+          <div className="container" style={{ paddingLeft: "100px" }}>
             <CountryPicker handleCountryChange={this.handleCountryChange} />
           </div>
           <div className="">
